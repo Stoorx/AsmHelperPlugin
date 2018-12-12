@@ -16,9 +16,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <fileTypeFactory implementation="AsmFileTypeFactory"/>
     </extensions>
 
     <actions>
         <!-- Add your actions here -->
+
     </actions>
 </idea-plugin>
