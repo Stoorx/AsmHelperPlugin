@@ -7,14 +7,14 @@
 
     psiClassPrefix="NASM"
     psiImplClassSuffix="Impl"
-    psiPackage="psi"
-    psiImplPackage="psi.impl"
+    psiPackage="AsmHelperPlugin.psi"
+    psiImplPackage="AsmHelperPlugin.psi.impl"
 
-    elementTypeHolderClass="psi.NASMTypes"
-    elementTypeClass="psi.NASMElementType"
-    tokenTypeClass="psi.NASMTokenType"
+    elementTypeHolderClass="AsmHelperPlugin.psi.NASMTypes"
+    elementTypeClass="AsmHelperPlugin.psi.NASMElementType"
+    tokenTypeClass="AsmHelperPlugin.psi.NASMTokenType"
 
-    psiImplUtilClass="psi.impl.NASMPsiImplUtil"
+    psiImplUtilClass="AsmHelperPlugin.psi.impl.NASMPsiImplUtil"
 
     tokens = [
         CRLF                = 'regexp:\r|\n|\r\n'
@@ -379,7 +379,7 @@ ParenthesisExpr ::= ROUND_L Expr ROUND_R { pin(".*")=1 extends=Expr }
 ParenthesisNumericExpr ::= ROUND_L NumericExpr ROUND_R { pin(".*")=1 extends=NumericExpr }
 
 NumericLiteral ::= ((SIZE_TYPE (BITWISE_NOT|MINUS|PLUS)?)? (BINARY|ZEROES|HEXADECIMAL|DECIMAL|CHARACTER)) { extends=Expr }
-Identifier ::= (ID) { extends=Expr mixin="psi.impl.NASMNamedElementImpl" implements="psi.NASMNamedElement" methods=[getName setName getNameIdentifier getReferences getPresentation] }
+Identifier ::= (ID) { extends=Expr mixin="AsmHelperPlugin.psi.impl.NASMNamedElementImpl" implements="AsmHelperPlugin.psi.NASMNamedElement" methods=[getName setName getNameIdentifier getReferences getPresentation] }
 LabelIdentifier ::= (SIZE_TYPE? (LBL|ID)) { extends=Expr }
 Reg ::= REGISTER { extends=Expr }
 Seg ::= SEGMENT_REGISTER { extends=Expr }

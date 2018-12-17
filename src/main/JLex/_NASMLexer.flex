@@ -1,9 +1,9 @@
-import com.intellij.lexer.FlexLexer;
-import com.intellij.psi.tree.IElementType;
 
-import static com.intellij.psi.TokenType.BAD_CHARACTER;
-import static com.intellij.psi.TokenType.WHITE_SPACE;
-import static psi.NASMTypes.*;
+import com.intellij.AsmHelperPlugin.psi.tree.IElementType;
+
+import static com.intellij.AsmHelperPlugin.psi.TokenType.BAD_CHARACTER;
+import static com.intellij.AsmHelperPlugin.psi.TokenType.WHITE_SPACE;
+import static AsmHelperPlugin.psi.NASMTypes.*;
 
 %%
 

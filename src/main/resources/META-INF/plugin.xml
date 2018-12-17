@@ -16,7 +16,9 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <fileTypeFactory implementation="AsmFileTypeFactory"/>
+        <fileTypeFactory implementation="AsmHelperPlugin.AsmFileTypeFactory"/>
+        <lang.parserDefinition language="nasm" implementationClass="AsmHelperPlugin.NASMParserDefinition"/>
+
     </extensions>
 
     <actions>
