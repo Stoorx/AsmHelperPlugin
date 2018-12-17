@@ -1,4 +1,4 @@
-
+//noinspection SyntaxErrorForFile
 {
     parserClass="NASMParser"
     parserUtilClass="NASMParserUtil"
@@ -16,7 +16,8 @@
 
     psiImplUtilClass="AsmHelperPlugin.psi.impl.NASMPsiImplUtil"
 
-    tokens = [
+    //noinspection SyntaxError
+tokens = [
         CRLF                = 'regexp:\r|\n|\r\n'
         WHITE_SPACE         = 'regexp:[ \t\x0B\f]+'
 
