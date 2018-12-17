@@ -34,6 +34,6 @@ public class AsmFileType extends LanguageFileType {
     @Nullable
     @Override
     public Icon getIcon() {
-        return AsmIcons.ASM_FILE_TYPE_ICON;
+        return NASMIcons.ASM_FILE;
     }
 }

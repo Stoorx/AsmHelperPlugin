@@ -1,7 +1,6 @@
 package AsmHelperPlugin;
 
 import AsmHelperPlugin.psi.NASMFile;
-import AsmHelperPlugin.psi.NASMTypes;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.PsiParser;
@@ -12,6 +11,8 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
+import gen.AsmHelperPlugin.NASMParser;
+import gen.AsmHelperPlugin.psi.NASMTypes;
 import org.jetbrains.annotations.NotNull;
 
 public class NASMParserDefinition implements ParserDefinition {

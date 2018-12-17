@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class NASMFile extends PsiFileBase {
 
-    protected NASMFile(@NotNull FileViewProvider viewProvider) {
+    public NASMFile(@NotNull FileViewProvider viewProvider) {
         super(viewProvider, NASMLanguage.INSTANCE);
     }
 
