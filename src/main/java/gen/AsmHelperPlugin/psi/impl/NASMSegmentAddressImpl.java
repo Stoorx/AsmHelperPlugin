@@ -4,14 +4,9 @@ package gen.AsmHelperPlugin.psi.impl;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
-import gen.AsmHelperPlugin.psi.NASMLabelDefMacro;
-import gen.AsmHelperPlugin.psi.NASMMacroCall;
-import gen.AsmHelperPlugin.psi.NASMSegmentAddress;
-import gen.AsmHelperPlugin.psi.NASMVisitor;
+import gen.AsmHelperPlugin.psi.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.*;
 
 public class NASMSegmentAddressImpl extends NASMExprImpl implements NASMSegmentAddress {
 
@@ -43,37 +38,37 @@ public class NASMSegmentAddressImpl extends NASMExprImpl implements NASMSegmentA
   @Override
   @Nullable
   public PsiElement getHexadecimal() {
-    return findChildByType(HEXADECIMAL);
+      return findChildByType(NASMTypes.HEXADECIMAL);
   }
 
   @Override
   @Nullable
   public PsiElement getId() {
-    return findChildByType(ID);
+      return findChildByType(NASMTypes.ID);
   }
 
   @Override
   @Nullable
   public PsiElement getLbl() {
-    return findChildByType(LBL);
+      return findChildByType(NASMTypes.LBL);
   }
 
   @Override
   @Nullable
   public PsiElement getLblDef() {
-    return findChildByType(LBL_DEF);
+      return findChildByType(NASMTypes.LBL_DEF);
   }
 
   @Override
   @Nullable
   public PsiElement getSegmentAddrL() {
-    return findChildByType(SEGMENT_ADDR_L);
+      return findChildByType(NASMTypes.SEGMENT_ADDR_L);
   }
 
   @Override
   @Nullable
   public PsiElement getZeroes() {
-    return findChildByType(ZEROES);
+      return findChildByType(NASMTypes.ZEROES);
   }
 
 }

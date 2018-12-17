@@ -5,10 +5,9 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import gen.AsmHelperPlugin.psi.NASMSeg;
+import gen.AsmHelperPlugin.psi.NASMTypes;
 import gen.AsmHelperPlugin.psi.NASMVisitor;
 import org.jetbrains.annotations.NotNull;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.SEGMENT_REGISTER;
 
 public class NASMSegImpl extends NASMExprImpl implements NASMSeg {
 
@@ -28,7 +27,7 @@ public class NASMSegImpl extends NASMExprImpl implements NASMSeg {
   @Override
   @NotNull
   public PsiElement getSegmentRegister() {
-    return findNotNullChildByType(SEGMENT_REGISTER);
+      return findNotNullChildByType(NASMTypes.SEGMENT_REGISTER);
   }
 
 }

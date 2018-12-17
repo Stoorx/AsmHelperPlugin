@@ -6,11 +6,10 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import gen.AsmHelperPlugin.psi.NASMAddress;
 import gen.AsmHelperPlugin.psi.NASMExpr;
+import gen.AsmHelperPlugin.psi.NASMTypes;
 import gen.AsmHelperPlugin.psi.NASMVisitor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.SIZE_TYPE;
 
 public class NASMAddressImpl extends NASMExprImpl implements NASMAddress {
 
@@ -36,7 +35,7 @@ public class NASMAddressImpl extends NASMExprImpl implements NASMAddress {
   @Override
   @Nullable
   public PsiElement getSizeType() {
-    return findChildByType(SIZE_TYPE);
+      return findChildByType(NASMTypes.SIZE_TYPE);
   }
 
 }

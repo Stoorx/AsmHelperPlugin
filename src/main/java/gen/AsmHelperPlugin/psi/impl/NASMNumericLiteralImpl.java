@@ -5,11 +5,10 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import gen.AsmHelperPlugin.psi.NASMNumericLiteral;
+import gen.AsmHelperPlugin.psi.NASMTypes;
 import gen.AsmHelperPlugin.psi.NASMVisitor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.*;
 
 public class NASMNumericLiteralImpl extends NASMExprImpl implements NASMNumericLiteral {
 
@@ -29,37 +28,37 @@ public class NASMNumericLiteralImpl extends NASMExprImpl implements NASMNumericL
   @Override
   @Nullable
   public PsiElement getBinary() {
-    return findChildByType(BINARY);
+      return findChildByType(NASMTypes.BINARY);
   }
 
   @Override
   @Nullable
   public PsiElement getCharacter() {
-    return findChildByType(CHARACTER);
+      return findChildByType(NASMTypes.CHARACTER);
   }
 
   @Override
   @Nullable
   public PsiElement getDecimal() {
-    return findChildByType(DECIMAL);
+      return findChildByType(NASMTypes.DECIMAL);
   }
 
   @Override
   @Nullable
   public PsiElement getHexadecimal() {
-    return findChildByType(HEXADECIMAL);
+      return findChildByType(NASMTypes.HEXADECIMAL);
   }
 
   @Override
   @Nullable
   public PsiElement getSizeType() {
-    return findChildByType(SIZE_TYPE);
+      return findChildByType(NASMTypes.SIZE_TYPE);
   }
 
   @Override
   @Nullable
   public PsiElement getZeroes() {
-    return findChildByType(ZEROES);
+      return findChildByType(NASMTypes.ZEROES);
   }
 
 }

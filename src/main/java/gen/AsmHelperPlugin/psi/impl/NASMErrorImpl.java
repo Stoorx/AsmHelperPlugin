@@ -6,10 +6,9 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import gen.AsmHelperPlugin.psi.NASMError;
+import gen.AsmHelperPlugin.psi.NASMTypes;
 import gen.AsmHelperPlugin.psi.NASMVisitor;
 import org.jetbrains.annotations.NotNull;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.ERROR_TAG;
 
 public class NASMErrorImpl extends ASTWrapperPsiElement implements NASMError {
 
@@ -29,7 +28,7 @@ public class NASMErrorImpl extends ASTWrapperPsiElement implements NASMError {
   @Override
   @NotNull
   public PsiElement getErrorTag() {
-    return findNotNullChildByType(ERROR_TAG);
+      return findNotNullChildByType(NASMTypes.ERROR_TAG);
   }
 
 }

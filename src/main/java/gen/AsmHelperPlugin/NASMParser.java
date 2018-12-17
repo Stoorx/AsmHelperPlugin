@@ -1,4 +1,5 @@
 // This is a generated file. Not intended for manual editing.
+
 package gen.AsmHelperPlugin;
 
 import com.intellij.lang.ASTNode;
@@ -12,8 +13,6 @@ import com.intellij.psi.tree.TokenSet;
 import static com.intellij.lang.parser.GeneratedParserUtilBase.*;
 import static gen.AsmHelperPlugin.psi.NASMTypes.*;
 
-//import static NASMParserUtil.*;
-
 @SuppressWarnings({"SimplifiableIfStatement", "UnusedAssignment"})
 public class NASMParser implements PsiParser, LightPsiParser {
 
@@ -26,7 +25,13 @@ public class NASMParser implements PsiParser, LightPsiParser {
     boolean r;
     b = adapt_builder_(t, b, this, EXTENDS_SETS_);
     Marker m = enter_section_(b, 0, _COLLAPSE_, null);
-    if (t == ASSIGN) {
+    if (t == AVX_2_OP) {
+      r = AVX2_OP(b, 0);
+    } else if (t == AVX_512_OP) {
+      r = AVX512_OP(b, 0);
+    } else if (t == AVX_OP) {
+      r = AVX_OP(b, 0);
+    } else if (t == ASSIGN) {
       r = Assign(b, 0);
     }
     else if (t == CONDITIONAL) {
@@ -52,50 +57,55 @@ public class NASMParser implements PsiParser, LightPsiParser {
     }
     else if (t == EXPR) {
       r = Expr(b, 0, -1);
-    }
-    else if (t == I_STRUC) {
+    } else if (t == FPU_OP) {
+      r = FPU_OP(b, 0);
+    } else if (t == GENERAL_OP) {
+      r = GENERAL_OP(b, 0);
+    } else if (t == I_STRUC) {
       r = IStruc(b, 0);
-    }
-    else if (t == INCLUDE) {
+    } else if (t == INCLUDE) {
       r = Include(b, 0);
-    }
-    else if (t == INSTRUCTION) {
+    } else if (t == INSTRUCTION) {
       r = Instruction(b, 0);
-    }
-    else if (t == LABEL) {
+    } else if (t == LABEL) {
       r = Label(b, 0);
-    }
-    else if (t == LABEL_DEF_MACRO) {
+    } else if (t == LABEL_DEF_MACRO) {
       r = LabelDefMacro(b, 0);
-    }
-    else if (t == MACRO) {
+    } else if (t == MMX_OP) {
+      r = MMX_OP(b, 0);
+    } else if (t == MACRO) {
       r = Macro(b, 0);
-    }
-    else if (t == MACRO_LABEL) {
+    } else if (t == MACRO_LABEL) {
       r = MacroLabel(b, 0);
-    }
-    else if (t == MAP_OPTION) {
+    } else if (t == MAP_OPTION) {
       r = MapOption(b, 0);
-    }
-    else if (t == NUMERIC_EXPR) {
+    } else if (t == NUMERIC_EXPR) {
       r = NumericExpr(b, 0);
-    }
-    else if (t == PARENTHESIS_NUMERIC_EXPR) {
+    } else if (t == PARENTHESIS_NUMERIC_EXPR) {
       r = ParenthesisNumericExpr(b, 0);
-    }
-    else if (t == PREPROCESSOR) {
+    } else if (t == PREPROCESSOR) {
       r = Preprocessor(b, 0);
-    }
-    else if (t == STRLEN) {
+    } else if (t == SSE_2_OP) {
+      r = SSE2_OP(b, 0);
+    } else if (t == SSE_3_OP) {
+      r = SSE3_OP(b, 0);
+    } else if (t == SSE_4_OP) {
+      r = SSE4_OP(b, 0);
+    } else if (t == SSE_OP) {
+      r = SSE_OP(b, 0);
+    } else if (t == SYSTEM_OP) {
+      r = SYSTEM_OP(b, 0);
+    } else if (t == STRLEN) {
       r = Strlen(b, 0);
-    }
-    else if (t == STRUC) {
+    } else if (t == STRUC) {
       r = Struc(b, 0);
-    }
-    else if (t == STRUCTURE) {
+    } else if (t == STRUCTURE) {
       r = Structure(b, 0);
-    }
-    else {
+    } else if (t == VIRTUALIZATION_OP) {
+      r = VIRTUALIZATION_OP(b, 0);
+    } else if (t == X_64_OP) {
+      r = X64_OP(b, 0);
+    } else {
       r = parse_root_(t, b, 0);
     }
     exit_section_(b, 0, m, t, r, true, TRUE_CONDITION);
@@ -115,6 +125,63 @@ public class NASMParser implements PsiParser, LightPsiParser {
       PLUS_EXPR, REG, SEG, SEGMENT_ADDRESS,
       STR, STRUCTURE_FIELD),
   };
+
+  /* ********************************************************** */
+  // INS_AVX2_SIMD | INS_AVX2_BROADCAST | INS_AVX2_BLEND | INS_AVX2_GATHER
+  public static boolean AVX2_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "AVX2_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, AVX_2_OP, "<avx 2 op>");
+    r = consumeToken(b, INS_AVX2_SIMD);
+    if (!r) r = consumeToken(b, INS_AVX2_BROADCAST);
+    if (!r) r = consumeToken(b, INS_AVX2_BLEND);
+    if (!r) r = consumeToken(b, INS_AVX2_GATHER);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // INS_AVX512_BLEND | INS_AVX512_BROADCAST | INS_AVX512_MOV | INS_AVX512_COMPRESS | INS_AVX512_CONV | INS_AVX512_MATH | INS_AVX512_LOGICAL | INS_AVX512_COMPARE | INS_AVX512_PACKED | INS_AVX512_PERM | INS_AVX512_OTHER
+  public static boolean AVX512_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "AVX512_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, AVX_512_OP, "<avx 512 op>");
+    r = consumeToken(b, INS_AVX512_BLEND);
+    if (!r) r = consumeToken(b, INS_AVX512_BROADCAST);
+    if (!r) r = consumeToken(b, INS_AVX512_MOV);
+    if (!r) r = consumeToken(b, INS_AVX512_COMPRESS);
+    if (!r) r = consumeToken(b, INS_AVX512_CONV);
+    if (!r) r = consumeToken(b, INS_AVX512_MATH);
+    if (!r) r = consumeToken(b, INS_AVX512_LOGICAL);
+    if (!r) r = consumeToken(b, INS_AVX512_COMPARE);
+    if (!r) r = consumeToken(b, INS_AVX512_PACKED);
+    if (!r) r = consumeToken(b, INS_AVX512_PERM);
+    if (!r) r = consumeToken(b, INS_AVX512_OTHER);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // INS_AVX_GENERAL | INS_AVX_AES | INS_AVX_COMPARISON | INS_AVX_CONVERSION | INS_AVX_LOGICAL | INS_AVX_MOV | INS_AVX_ARITH | INS_AVX_PACKED | INS_AVX_BLEND | INS_AVX_CACHE | INS_AVX_FMA3 | INS_AVX_OTHER
+  public static boolean AVX_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "AVX_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, AVX_OP, "<avx op>");
+    r = consumeToken(b, INS_AVX_GENERAL);
+    if (!r) r = consumeToken(b, INS_AVX_AES);
+    if (!r) r = consumeToken(b, INS_AVX_COMPARISON);
+    if (!r) r = consumeToken(b, INS_AVX_CONVERSION);
+    if (!r) r = consumeToken(b, INS_AVX_LOGICAL);
+    if (!r) r = consumeToken(b, INS_AVX_MOV);
+    if (!r) r = consumeToken(b, INS_AVX_ARITH);
+    if (!r) r = consumeToken(b, INS_AVX_PACKED);
+    if (!r) r = consumeToken(b, INS_AVX_BLEND);
+    if (!r) r = consumeToken(b, INS_AVX_CACHE);
+    if (!r) r = consumeToken(b, INS_AVX_FMA3);
+    if (!r) r = consumeToken(b, INS_AVX_OTHER);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
 
   /* ********************************************************** */
   // SQUARE_L MINUS? Expr SQUARE_R
@@ -873,6 +940,50 @@ public class NASMParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // INS_FPU_DATA_TRANS | INS_FPU_BASIC_ARITH | INS_FPU_COMPARISON | INS_FPU_TRANSCEND | INS_FPU_LOAD | INS_FPU_CONTROL | INS_FPU_STATE
+  public static boolean FPU_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FPU_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, FPU_OP, "<fpu op>");
+    r = consumeToken(b, INS_FPU_DATA_TRANS);
+    if (!r) r = consumeToken(b, INS_FPU_BASIC_ARITH);
+    if (!r) r = consumeToken(b, INS_FPU_COMPARISON);
+    if (!r) r = consumeToken(b, INS_FPU_TRANSCEND);
+    if (!r) r = consumeToken(b, INS_FPU_LOAD);
+    if (!r) r = consumeToken(b, INS_FPU_CONTROL);
+    if (!r) r = consumeToken(b, INS_FPU_STATE);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // INS_DATA_TRANS_MOV| INS_DATA_TRANS_XCHG | INS_DATA_TRANS_OTHER | INS_DECIMAL_ARITH | INS_BINARY_ARITH | INS_BINARY_LOGICAL | INS_BINARY_ROTATE | INS_BINARY_SET | INS_BINARY_OTHER | INS_CONTROL_TRANS | INS_STRING_DATA | INS_INPUT_OUTPUT | INS_FLAG_CONTROL | INS_SEG_REGS | INS_MISC_OTHER | INS_RNG_RAND | INS_BIT_MANIPULATION
+  public static boolean GENERAL_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "GENERAL_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, GENERAL_OP, "<general op>");
+    r = consumeToken(b, INS_DATA_TRANS_MOV);
+    if (!r) r = consumeToken(b, INS_DATA_TRANS_XCHG);
+    if (!r) r = consumeToken(b, INS_DATA_TRANS_OTHER);
+    if (!r) r = consumeToken(b, INS_DECIMAL_ARITH);
+    if (!r) r = consumeToken(b, INS_BINARY_ARITH);
+    if (!r) r = consumeToken(b, INS_BINARY_LOGICAL);
+    if (!r) r = consumeToken(b, INS_BINARY_ROTATE);
+    if (!r) r = consumeToken(b, INS_BINARY_SET);
+    if (!r) r = consumeToken(b, INS_BINARY_OTHER);
+    if (!r) r = consumeToken(b, INS_CONTROL_TRANS);
+    if (!r) r = consumeToken(b, INS_STRING_DATA);
+    if (!r) r = consumeToken(b, INS_INPUT_OUTPUT);
+    if (!r) r = consumeToken(b, INS_FLAG_CONTROL);
+    if (!r) r = consumeToken(b, INS_SEG_REGS);
+    if (!r) r = consumeToken(b, INS_MISC_OTHER);
+    if (!r) r = consumeToken(b, INS_RNG_RAND);
+    if (!r) r = consumeToken(b, INS_BIT_MANIPULATION);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
   // ISTRUC_TAG Identifier CRLF* (AT_TAG (StructureField|LabelIdentifier|Identifier) SEPARATOR DATA_OP DataValue CRLF*)* IEND_TAG
   public static boolean IStruc(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "IStruc")) return false;
@@ -1265,6 +1376,23 @@ public class NASMParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // INS_MMX_DATA_TRANS | INS_MMX_CONVERSION | INS_MMX_ARITH | INS_MMX_COMPARISON | INS_MMX_LOGICAL | INS_MMX_ROTATE | INS_MMX_STATE
+  public static boolean MMX_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "MMX_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, MMX_OP, "<mmx op>");
+    r = consumeToken(b, INS_MMX_DATA_TRANS);
+    if (!r) r = consumeToken(b, INS_MMX_CONVERSION);
+    if (!r) r = consumeToken(b, INS_MMX_ARITH);
+    if (!r) r = consumeToken(b, INS_MMX_COMPARISON);
+    if (!r) r = consumeToken(b, INS_MMX_LOGICAL);
+    if (!r) r = consumeToken(b, INS_MMX_ROTATE);
+    if (!r) r = consumeToken(b, INS_MMX_STATE);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
   // MACRO_TAG (Identifier MacroParams MacroDefaultParam? CRLF* (MacroLabel|Data|Instruction|Preprocessor|ID CRLF*)*) MACRO_END_TAG
   public static boolean Macro(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Macro")) return false;
@@ -1572,19 +1700,19 @@ public class NASMParser implements PsiParser, LightPsiParser {
   static boolean Mnemonic(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Mnemonic")) return false;
     boolean r;
-    r = consumeToken(b, GENERAL_OP);
-    if (!r) r = consumeToken(b, SYSTEM_OP);
-    if (!r) r = consumeToken(b, VIRTUALIZATION_OP);
-    if (!r) r = consumeToken(b, X64_OP);
-    if (!r) r = consumeToken(b, FPU_OP);
-    if (!r) r = consumeToken(b, MMX_OP);
-    if (!r) r = consumeToken(b, SSE_OP);
-    if (!r) r = consumeToken(b, SSE2_OP);
-    if (!r) r = consumeToken(b, SSE3_OP);
-    if (!r) r = consumeToken(b, SSE4_OP);
-    if (!r) r = consumeToken(b, AVX_OP);
-    if (!r) r = consumeToken(b, AVX2_OP);
-    if (!r) r = consumeToken(b, AVX512_OP);
+    r = GENERAL_OP(b, l + 1);
+    if (!r) r = SYSTEM_OP(b, l + 1);
+    if (!r) r = VIRTUALIZATION_OP(b, l + 1);
+    if (!r) r = X64_OP(b, l + 1);
+    if (!r) r = FPU_OP(b, l + 1);
+    if (!r) r = MMX_OP(b, l + 1);
+    if (!r) r = SSE_OP(b, l + 1);
+    if (!r) r = SSE2_OP(b, l + 1);
+    if (!r) r = SSE3_OP(b, l + 1);
+    if (!r) r = SSE4_OP(b, l + 1);
+    if (!r) r = AVX_OP(b, l + 1);
+    if (!r) r = AVX2_OP(b, l + 1);
+    if (!r) r = AVX512_OP(b, l + 1);
     return r;
   }
 
@@ -1695,6 +1823,87 @@ public class NASMParser implements PsiParser, LightPsiParser {
     r = r && Identifier(b, l + 1);
     r = r && Expr(b, l + 1, -1);
     exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // INS_SSE2_DATA_TRANS | INS_SSE2_ARITH | INS_SSE2_LOGICAL | INS_SSE2_COMPARISON | INS_SSE2_OTHER | INS_SSE2_CONVERSION | INS_SSE2_SIMD_INT | INS_SSE2_CACHE_CTRL
+  public static boolean SSE2_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SSE2_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, SSE_2_OP, "<sse 2 op>");
+    r = consumeToken(b, INS_SSE2_DATA_TRANS);
+    if (!r) r = consumeToken(b, INS_SSE2_ARITH);
+    if (!r) r = consumeToken(b, INS_SSE2_LOGICAL);
+    if (!r) r = consumeToken(b, INS_SSE2_COMPARISON);
+    if (!r) r = consumeToken(b, INS_SSE2_OTHER);
+    if (!r) r = consumeToken(b, INS_SSE2_CONVERSION);
+    if (!r) r = consumeToken(b, INS_SSE2_SIMD_INT);
+    if (!r) r = consumeToken(b, INS_SSE2_CACHE_CTRL);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // INS_SSE3_GENERAL | INS_SSE3_ARITH | INS_SSE3_OTHER
+  public static boolean SSE3_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SSE3_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, SSE_3_OP, "<sse 3 op>");
+    r = consumeToken(b, INS_SSE3_GENERAL);
+    if (!r) r = consumeToken(b, INS_SSE3_ARITH);
+    if (!r) r = consumeToken(b, INS_SSE3_OTHER);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // INS_SSE4_ARITH | INS_SSE4_DATA_TRANS | INS_SSE4_BLEND | INS_SSE4_PACKED_INT | INS_SSE4_PACKED_FP | INS_SSE4_INS_EXT | INS_SSE4_CONVERSION | INS_SSE4_OTHER
+  public static boolean SSE4_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SSE4_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, SSE_4_OP, "<sse 4 op>");
+    r = consumeToken(b, INS_SSE4_ARITH);
+    if (!r) r = consumeToken(b, INS_SSE4_DATA_TRANS);
+    if (!r) r = consumeToken(b, INS_SSE4_BLEND);
+    if (!r) r = consumeToken(b, INS_SSE4_PACKED_INT);
+    if (!r) r = consumeToken(b, INS_SSE4_PACKED_FP);
+    if (!r) r = consumeToken(b, INS_SSE4_INS_EXT);
+    if (!r) r = consumeToken(b, INS_SSE4_CONVERSION);
+    if (!r) r = consumeToken(b, INS_SSE4_OTHER);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // INS_SSE_DATA_TRANS | INS_SSE_ARITH | INS_SSE_COMPARISON | INS_SSE_LOGICAL | INS_SSE_OTHER | INS_SSE_CONVERSION | INS_SSE_STATE | INS_SSE_SIMD_INT | INS_SSE_CACHE_CTRL | INS_SSE_PREFETCH
+  public static boolean SSE_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SSE_OP")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, SSE_OP, "<sse op>");
+    r = consumeToken(b, INS_SSE_DATA_TRANS);
+    if (!r) r = consumeToken(b, INS_SSE_ARITH);
+    if (!r) r = consumeToken(b, INS_SSE_COMPARISON);
+    if (!r) r = consumeToken(b, INS_SSE_LOGICAL);
+    if (!r) r = consumeToken(b, INS_SSE_OTHER);
+    if (!r) r = consumeToken(b, INS_SSE_CONVERSION);
+    if (!r) r = consumeToken(b, INS_SSE_STATE);
+    if (!r) r = consumeToken(b, INS_SSE_SIMD_INT);
+    if (!r) r = consumeToken(b, INS_SSE_CACHE_CTRL);
+    if (!r) r = consumeToken(b, INS_SSE_PREFETCH);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // INS_SYSTEM
+  public static boolean SYSTEM_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SYSTEM_OP")) return false;
+    if (!nextTokenIs(b, INS_SYSTEM)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, INS_SYSTEM);
+    exit_section_(b, m, SYSTEM_OP, r);
     return r;
   }
 
@@ -2003,6 +2212,31 @@ public class NASMParser implements PsiParser, LightPsiParser {
       if (!empty_element_parsed_guard_(b, "Structure_1", c)) break;
     }
     return true;
+  }
+
+  /* ********************************************************** */
+  // INS_INTEL_VMX | INS_AMD_SVM
+  public static boolean VIRTUALIZATION_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "VIRTUALIZATION_OP")) return false;
+    if (!nextTokenIs(b, "<virtualization op>", INS_AMD_SVM, INS_INTEL_VMX)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, VIRTUALIZATION_OP, "<virtualization op>");
+    r = consumeToken(b, INS_INTEL_VMX);
+    if (!r) r = consumeToken(b, INS_AMD_SVM);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // INS_64_BIT
+  public static boolean X64_OP(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "X64_OP")) return false;
+    if (!nextTokenIs(b, INS_64_BIT)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, INS_64_BIT);
+    exit_section_(b, m, X_64_OP, r);
+    return r;
   }
 
   /* ********************************************************** */

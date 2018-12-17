@@ -12,9 +12,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static gen.AsmHelperPlugin.psi.NASMTypes.COMMENT;
-import static gen.AsmHelperPlugin.psi.NASMTypes.DATA_OP;
-
 public class NASMDataImpl extends ASTWrapperPsiElement implements NASMData {
 
   public NASMDataImpl(@NotNull ASTNode node) {
@@ -51,13 +48,13 @@ public class NASMDataImpl extends ASTWrapperPsiElement implements NASMData {
   @Override
   @Nullable
   public PsiElement getComment() {
-    return findChildByType(COMMENT);
+      return findChildByType(NASMTypes.COMMENT);
   }
 
   @Override
   @NotNull
   public PsiElement getDataOp() {
-    return findNotNullChildByType(DATA_OP);
+      return findNotNullChildByType(NASMTypes.DATA_OP);
   }
 
 }

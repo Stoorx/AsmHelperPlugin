@@ -5,10 +5,9 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import gen.AsmHelperPlugin.psi.NASMStructureField;
+import gen.AsmHelperPlugin.psi.NASMTypes;
 import gen.AsmHelperPlugin.psi.NASMVisitor;
 import org.jetbrains.annotations.NotNull;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.STRUCT_FIELD;
 
 public class NASMStructureFieldImpl extends NASMExprImpl implements NASMStructureField {
 
@@ -28,7 +27,7 @@ public class NASMStructureFieldImpl extends NASMExprImpl implements NASMStructur
   @Override
   @NotNull
   public PsiElement getStructField() {
-    return findNotNullChildByType(STRUCT_FIELD);
+      return findNotNullChildByType(NASMTypes.STRUCT_FIELD);
   }
 
 }

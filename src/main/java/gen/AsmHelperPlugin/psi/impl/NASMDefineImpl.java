@@ -8,12 +8,11 @@ import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import gen.AsmHelperPlugin.psi.NASMDefine;
 import gen.AsmHelperPlugin.psi.NASMExpr;
+import gen.AsmHelperPlugin.psi.NASMTypes;
 import gen.AsmHelperPlugin.psi.NASMVisitor;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.DEFINE_TAG;
 
 public class NASMDefineImpl extends ASTWrapperPsiElement implements NASMDefine {
 
@@ -39,7 +38,7 @@ public class NASMDefineImpl extends ASTWrapperPsiElement implements NASMDefine {
   @Override
   @NotNull
   public PsiElement getDefineTag() {
-    return findNotNullChildByType(DEFINE_TAG);
+      return findNotNullChildByType(NASMTypes.DEFINE_TAG);
   }
 
 }

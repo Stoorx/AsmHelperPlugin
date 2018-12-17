@@ -5,12 +5,10 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import gen.AsmHelperPlugin.psi.NASMMacroParamReference;
+import gen.AsmHelperPlugin.psi.NASMTypes;
 import gen.AsmHelperPlugin.psi.NASMVisitor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.MACRO_PARAM_REF;
-import static gen.AsmHelperPlugin.psi.NASMTypes.SIZE_TYPE;
 
 public class NASMMacroParamReferenceImpl extends NASMExprImpl implements NASMMacroParamReference {
 
@@ -30,13 +28,13 @@ public class NASMMacroParamReferenceImpl extends NASMExprImpl implements NASMMac
   @Override
   @NotNull
   public PsiElement getMacroParamRef() {
-    return findNotNullChildByType(MACRO_PARAM_REF);
+      return findNotNullChildByType(NASMTypes.MACRO_PARAM_REF);
   }
 
   @Override
   @Nullable
   public PsiElement getSizeType() {
-    return findChildByType(SIZE_TYPE);
+      return findChildByType(NASMTypes.SIZE_TYPE);
   }
 
 }

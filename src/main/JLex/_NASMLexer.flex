@@ -1,9 +1,8 @@
+import com.intellij.psi.tree.IElementType;
 
-import com.intellij.AsmHelperPlugin.psi.tree.IElementType;
-
-import static com.intellij.AsmHelperPlugin.psi.TokenType.BAD_CHARACTER;
-import static com.intellij.AsmHelperPlugin.psi.TokenType.WHITE_SPACE;
-import static AsmHelperPlugin.psi.NASMTypes.*;
+import static com.intellij.psi.TokenType.BAD_CHARACTER;
+import static com.intellij.psi.TokenType.WHITE_SPACE;
+import static NASMTypes.*;
 
 %%
 
@@ -24,28 +23,28 @@ EOL=\R
 WHITE_SPACE=\s+
 
 CRLF=\r|\n|\r\n
-WHITE_SPACE=[ \t\x0B\f]+
 COMMENT=(;.*?(\r|\n|\r\n)*?)
 EQU=([eE][qQ][uU])
+WHITESPACE=[ \t\x0B\f]+
 SEGMENT_ADDR_L=((0[xX][0-9a-fA-F]+|0[hH][0-9a-fA-F]+|\$[0-9]+[0-9a-fA-F]*|[0-9]+[0-9a-fA-F]*[hH])|[0]*):
-INCLUDE_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([iI][nN][cC][lL][uU][dD][eE])
-DEFINE_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)(([xX]|[iI])?[dD][eE][fF][iI][nN][eE])
-ASSIGN_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([iI]?[aA][sS][sS][iI][gG][nN])
-MACRO_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([iI]?[mM][aA][cC][rR][oO])
-MACRO_END_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([iI]?[eE][nN][dD][mM][aA][cC][rR][oO])
+INCLUDE_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([iI][nN][cC][lL][uU][dD][eE])
+DEFINE_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)(([xX]|[iI])?[dD][eE][fF][iI][nN][eE])
+ASSIGN_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([iI]?[aA][sS][sS][iI][gG][nN])
+MACRO_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([iI]?[mM][aA][cC][rR][oO])
+MACRO_END_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([iI]?[eE][nN][dD][mM][aA][cC][rR][oO])
 MACRO_PARAM_REF=((%|%%)([1-9][0-9]*))
-MACRO_VAR_REF=((%%)([a-zA-Z0-9$._?][a-zA-Z0-9$._?#@\126]*))
+MACRO_VAR_REF=((%%)([a-zA-Z0-9$._?][a-zA-Z0-9$._?#@]*))
 MACRO_PARAM_LBL_DEF=((((%|%%)([a-zA-Z0-9$._?][a-zA-Z0-9$._]*))|(([a-zA-Z0-9$._?][a-zA-Z0-9$._]*)((%)[0-9]+)[a-zA-Z0-9$._]*)):)
-IF_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([iI][fF][nN]?([dD][eE][fF])?)
-IFMACRO_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([iI][fF][mM][aA][cC][rR][oO])
-IFCTX_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([iI][fF][cC][tT][xX])
-ELIF_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([eE][lL][iI][fF][nN]?([dD][eE][fF])?)
-ELSE_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([eE][lL][sS][eE])
-ENDIF_TAG=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([eE][nN][dD][iI][fF])
-STRLEN_TAG=((({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([sS][tT][rR][lL][eE][nN]))
-ERROR_TAG=((({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([eE][rR][rR][oO][rR])).*
-SECTION=(([sS][eE][cC][tT][iI][oO][nN])({WHITE_SPACE})((\.)([a-zA-Z_]+[a-zA-Z0-9_]*)))
-SEGMENT=(([sS][eE][gG][mM][eE][nN][tT])({WHITE_SPACE})([a-zA-Z_]+[a-zA-Z0-9_]*))
+IF_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([iI][fF][nN]?([dD][eE][fF])?)
+IFMACRO_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([iI][fF][mM][aA][cC][rR][oO])
+IFCTX_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([iI][fF][cC][tT][xX])
+ELIF_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([eE][lL][iI][fF][nN]?([dD][eE][fF])?)
+ELSE_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([eE][lL][sS][eE])
+ENDIF_TAG=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([eE][nN][dD][iI][fF])
+STRLEN_TAG=((([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([sS][tT][rR][lL][eE][nN]))
+ERROR_TAG=((([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([eE][rR][rR][oO][rR])).*
+SECTION=(([sS][eE][cC][tT][iI][oO][nN])([ \t\x0B\f]+)((\.)([a-zA-Z_]+[a-zA-Z0-9_]*)))
+SEGMENT=(([sS][eE][gG][mM][eE][nN][tT])([ \t\x0B\f]+)([a-zA-Z_]+[a-zA-Z0-9_]*))
 MAP_OPTIONS=(all|brief|sections|segments|symbols)
 MAP_FILE=(([a-zA-Z0-9_.]+)(\.)[mM][aA][pP])
 STRUC_TAG=([sS][tT][rR][uU][cC])
@@ -56,7 +55,7 @@ AT_TAG=([aA][tT])
 STRUCT_FIELD=(([a-zA-Z_]+[a-zA-Z0-9_]*)(\.)([a-zA-Z_]+[a-zA-Z0-9_]*))
 DIRECTIVE_OP=([bB][iI][tT][sS]|[uU][sS][eE]16|[uU][sS][eE]32|[cC][oO][dD][eE]16|[cC][oO][dD][eE]32|[aA][bB][sS][oO][lL][uU][tT][eE]|[eE][xX][tT][eE][rR][nN]|[gG][lL][oO][bB][aA][lL]|[oO][rR][gG]|[aA][lL][iI][gG][nN]|[sS][tT][rR][uU][cC]|[eE][nN][dD][sS][tT][rR][uU][cC]|[cC][oO][mM][mM][oO][nN]|[cC][pP][uU]|[gG][rR][oO][uU][pP]|[uU][pP][pP][eE][rR][cC][aA][sS][eE]|[iI][mM][pP][oO][rR][tT]|[eE][xX][pP][oO][rR][tT]|[lL][iI][bB][rR][aA][rR][yY]|[mM][oO][dD][uU][lL][eE])
 END_DIRECTIVE_OP=([eE][nN][dD])
-PREPROCESSOR_OP=(({WHITE_SPACE})?[#%]({WHITE_SPACE})?)([xX]?[iI]?[dD][eE][fF][iI][nN][eE]|[uU][nN][dD][eE][fF]|[aA][sS][sS][iI][gG][nN]|[iI]?[dD][eE][fF][sS][tT][rR]|[iI]?[dD][eE][fF][tT][oO][kK]|[sS][tT][rR][cC][aA][tT]|[sS][tT][rR][lL][eE][nN]|[sS][uU][bB][sS][tT][rR]|[iI]?[mM][aA][cC][rR][oO]|[eE][nN][dD][mM][aA][cC][rR][oO]|[rR][oO][tT][aA][tT][eE]|[rR][eE][pP]|[eE][nN][dD][rR][eE][pP])
+PREPROCESSOR_OP=(([ \t\x0B\f]+)?[#%]([ \t\x0B\f]+)?)([xX]?[iI]?[dD][eE][fF][iI][nN][eE]|[uU][nN][dD][eE][fF]|[aA][sS][sS][iI][gG][nN]|[iI]?[dD][eE][fF][sS][tT][rR]|[iI]?[dD][eE][fF][tT][oO][kK]|[sS][tT][rR][cC][aA][tT]|[sS][tT][rR][lL][eE][nN]|[sS][uU][bB][sS][tT][rR]|[iI]?[mM][aA][cC][rR][oO]|[eE][nN][dD][mM][aA][cC][rR][oO]|[rR][oO][tT][aA][tT][eE]|[rR][eE][pP]|[eE][nN][dD][rR][eE][pP])
 DATA_OP=([rR][eE][sS][bBwWdDqQtToOyYzZ]|[dD][bBwWdDqQtToOyYzZ]|[tT][iI][mM][eE][sS])
 INS_DATA_TRANS_MOV=(mov([sz]x)?|cmov(n?[abceglopsz]|n?[abgl]e|p[eo]))|(xchg|bswap|xadd|cmpxchg(8b)?)
 INS_DATA_TRANS_XCHG=(xchg|bswap|xadd|cmpxchg(8b)?)
@@ -150,25 +149,12 @@ INS_AVX512_PACKED=((vp(absq|(lzcnt|ternlog)[dq]|madd52[lh]uq|(max|min)[su]q|mull
 INS_AVX512_PERM=(vperm([bdw]|[it]2([bdwq]|p[ds])))
 INS_AVX512_OTHER=(valign[dq]|vdbpsadbw|vpmultishiftqb|vpsrav[dqw])
 OP_PREFIX=((rep(n?[ez])|rep)|lock)
-GENERAL_OP={INS_DATA_TRANS_MOV}|{INS_DATA_TRANS_XCHG}|{INS_DATA_TRANS_OTHER}|{INS_DECIMAL_ARITH}|{INS_BINARY_ARITH}|{INS_BINARY_LOGICAL}|{INS_BINARY_ROTATE}|{INS_BINARY_SET}|{INS_BINARY_OTHER}|{INS_CONTROL_TRANS}|{INS_STRING_DATA}|{INS_INPUT_OUTPUT}|{INS_FLAG_CONTROL}|{INS_SEG_REGS}|{INS_MISC_OTHER}|{INS_RNG_RAND}|{INS_BIT_MANIPULATION}
-SYSTEM_OP={INS_SYSTEM}
-VIRTUALIZATION_OP={INS_INTEL_VMX}|{INS_AMD_SVM}
-X64_OP={INS_64_BIT}
-FPU_OP={INS_FPU_DATA_TRANS}|{INS_FPU_BASIC_ARITH}|{INS_FPU_COMPARISON}|{INS_FPU_TRANSCEND}|{INS_FPU_LOAD}|{INS_FPU_CONTROL}|{INS_FPU_STATE}
-MMX_OP={INS_MMX_DATA_TRANS}|{INS_MMX_CONVERSION}|{INS_MMX_ARITH}|{INS_MMX_COMPARISON}|{INS_MMX_LOGICAL}|{INS_MMX_ROTATE}|{INS_MMX_STATE}
-SSE_OP={INS_SSE_DATA_TRANS}|{INS_SSE_ARITH}|{INS_SSE_COMPARISON}|{INS_SSE_LOGICAL}|{INS_SSE_OTHER}|{INS_SSE_CONVERSION}|{INS_SSE_STATE}|{INS_SSE_SIMD_INT}|{INS_SSE_CACHE_CTRL}|{INS_SSE_PREFETCH}
-SSE2_OP={INS_SSE2_DATA_TRANS}|{INS_SSE2_ARITH}|{INS_SSE2_LOGICAL}|{INS_SSE2_COMPARISON}|{INS_SSE2_OTHER}|{INS_SSE2_CONVERSION}|{INS_SSE2_SIMD_INT}|{INS_SSE2_CACHE_CTRL}
-SSE3_OP={INS_SSE3_GENERAL}|{INS_SSE3_ARITH}|{INS_SSE3_OTHER}
-SSE4_OP={INS_SSE4_ARITH}|{INS_SSE4_DATA_TRANS}|{INS_SSE4_BLEND}|{INS_SSE4_PACKED_INT}|{INS_SSE4_PACKED_FP}|{INS_SSE4_INS_EXT}|{INS_SSE4_CONVERSION}|{INS_SSE4_OTHER}
-AVX_OP={INS_AVX_GENERAL}|{INS_AVX_AES}|{INS_AVX_COMPARISON}|{INS_AVX_CONVERSION}|{INS_AVX_LOGICAL}|{INS_AVX_MOV}|{INS_AVX_ARITH}|{INS_AVX_PACKED}|{INS_AVX_BLEND}|{INS_AVX_CACHE}|{INS_AVX_FMA3}|{INS_AVX_OTHER}
-AVX2_OP={INS_AVX2_SIMD}|{INS_AVX2_BROADCAST}|{INS_AVX2_BLEND}|{INS_AVX2_GATHER}
-AVX512_OP={INS_AVX512_BLEND}|{INS_AVX512_BROADCAST}|{INS_AVX512_MOV}|{INS_AVX512_COMPRESS}|{INS_AVX512_CONV}|{INS_AVX512_MATH}|{INS_AVX512_LOGICAL}|{INS_AVX512_COMPARE}|{INS_AVX512_PACKED}|{INS_AVX512_PERM}|{INS_AVX512_OTHER}
 REGISTER=(%)?(([c-gs]s):)?(([abcd][hl])|([er]?[abcd]x)|([er]?[sb]p)|([er]?[sd]i|dil|sil|bpl|spl)|([er]?ip)|(r(8|9|1[0-5])[bdlw]?)|([er]?flags)|(cr[0-8])|(d[rb][0-367]|dr([89]|1[0-5]))|(tr[3-7])|(([gil]dt)r?|tr)|(bnd([0-3]|cfg[su]|status))|(efer|tpr|syscfg)|((mm|st|fpr)[0-7])|([xy]mm([0-9]|1[0-5])|mxcsr)|(zmm([12]?[0-9]|30|31)))
 SEGMENT_REGISTER=([c-gs]s)
 SIZE_TYPE=[sS][hH][oO][rR][tT]|[lL][oO][nN][gG]|[nN][eE][aA][rR]|[fF][aA][rR]|(((([dDqQoOtTyYzZ]|[xX][mM][mM])?[wW][oO][rR][dD])|[bB][yY][tT][eE])(([ \t\x0B\f]+)[pP][tT][rR])?)
 ID=([a-zA-Z_]+[a-zA-Z0-9_%]*)
-LBL_DEF=([a-zA-Z$._?#@\126]+[a-zA-Z0-9_]*):
-LBL=([a-zA-Z$._?#@\126]+[a-zA-Z0-9_]*)
+LBL_DEF=([a-zA-Z$._?#@]+[a-zA-Z0-9_]*):
+LBL=([a-zA-Z$._?#@]+[a-zA-Z0-9_]*)
 BINARY=(0[bB][0-1]+|0[yY][0-1]+|[0-1][0-1]*[bB]|[0-1][0-1]*[yY])
 HEXADECIMAL=(0[xX][0-9a-fA-F]+|0[hH][0-9a-fA-F]+|\$[0-9]+[0-9a-fA-F]*|[0-9]+[0-9a-fA-F]*[hH])
 ZEROES=[0]+
@@ -207,9 +193,9 @@ STRING=('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")
   "%%"                        { return PERCENT2; }
 
   {CRLF}                      { return CRLF; }
-  {WHITE_SPACE}               { return WHITE_SPACE; }
   {COMMENT}                   { return COMMENT; }
   {EQU}                       { return EQU; }
+  {WHITESPACE}                { return WHITESPACE; }
   {SEGMENT_ADDR_L}            { return SEGMENT_ADDR_L; }
   {INCLUDE_TAG}               { return INCLUDE_TAG; }
   {DEFINE_TAG}                { return DEFINE_TAG; }
@@ -333,19 +319,6 @@ STRING=('([^'\\]|\\.)*'|\"([^\"\\]|\\.)*\")
   {INS_AVX512_PERM}           { return INS_AVX512_PERM; }
   {INS_AVX512_OTHER}          { return INS_AVX512_OTHER; }
   {OP_PREFIX}                 { return OP_PREFIX; }
-  {GENERAL_OP}                { return GENERAL_OP; }
-  {SYSTEM_OP}                 { return SYSTEM_OP; }
-  {VIRTUALIZATION_OP}         { return VIRTUALIZATION_OP; }
-  {X64_OP}                    { return X64_OP; }
-  {FPU_OP}                    { return FPU_OP; }
-  {MMX_OP}                    { return MMX_OP; }
-  {SSE_OP}                    { return SSE_OP; }
-  {SSE2_OP}                   { return SSE2_OP; }
-  {SSE3_OP}                   { return SSE3_OP; }
-  {SSE4_OP}                   { return SSE4_OP; }
-  {AVX_OP}                    { return AVX_OP; }
-  {AVX2_OP}                   { return AVX2_OP; }
-  {AVX512_OP}                 { return AVX512_OP; }
   {REGISTER}                  { return REGISTER; }
   {SEGMENT_REGISTER}          { return SEGMENT_REGISTER; }
   {SIZE_TYPE}                 { return SIZE_TYPE; }

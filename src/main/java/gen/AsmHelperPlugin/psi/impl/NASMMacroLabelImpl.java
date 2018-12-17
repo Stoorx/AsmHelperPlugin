@@ -5,14 +5,9 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
-import gen.AsmHelperPlugin.psi.NASMData;
-import gen.AsmHelperPlugin.psi.NASMInstruction;
-import gen.AsmHelperPlugin.psi.NASMMacroLabel;
-import gen.AsmHelperPlugin.psi.NASMVisitor;
+import gen.AsmHelperPlugin.psi.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.MACRO_PARAM_LBL_DEF;
 
 public class NASMMacroLabelImpl extends ASTWrapperPsiElement implements NASMMacroLabel {
 
@@ -44,7 +39,7 @@ public class NASMMacroLabelImpl extends ASTWrapperPsiElement implements NASMMacr
   @Override
   @NotNull
   public PsiElement getMacroParamLblDef() {
-    return findNotNullChildByType(MACRO_PARAM_LBL_DEF);
+      return findNotNullChildByType(NASMTypes.MACRO_PARAM_LBL_DEF);
   }
 
 }

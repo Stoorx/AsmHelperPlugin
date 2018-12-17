@@ -5,10 +5,9 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import gen.AsmHelperPlugin.psi.NASMEndDirective;
+import gen.AsmHelperPlugin.psi.NASMTypes;
 import gen.AsmHelperPlugin.psi.NASMVisitor;
 import org.jetbrains.annotations.NotNull;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.END_DIRECTIVE_OP;
 
 public class NASMEndDirectiveImpl extends NASMExprImpl implements NASMEndDirective {
 
@@ -28,7 +27,7 @@ public class NASMEndDirectiveImpl extends NASMExprImpl implements NASMEndDirecti
   @Override
   @NotNull
   public PsiElement getEndDirectiveOp() {
-    return findNotNullChildByType(END_DIRECTIVE_OP);
+      return findNotNullChildByType(NASMTypes.END_DIRECTIVE_OP);
   }
 
 }

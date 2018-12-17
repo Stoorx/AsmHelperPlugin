@@ -6,16 +6,11 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
-import gen.AsmHelperPlugin.psi.NASMDirective;
-import gen.AsmHelperPlugin.psi.NASMDirectiveArg;
-import gen.AsmHelperPlugin.psi.NASMMapOption;
-import gen.AsmHelperPlugin.psi.NASMVisitor;
+import gen.AsmHelperPlugin.psi.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-
-import static gen.AsmHelperPlugin.psi.NASMTypes.DIRECTIVE_OP;
 
 public class NASMDirectiveImpl extends ASTWrapperPsiElement implements NASMDirective {
 
@@ -47,7 +42,7 @@ public class NASMDirectiveImpl extends ASTWrapperPsiElement implements NASMDirec
   @Override
   @Nullable
   public PsiElement getDirectiveOp() {
-    return findChildByType(DIRECTIVE_OP);
+      return findChildByType(NASMTypes.DIRECTIVE_OP);
   }
 
 }

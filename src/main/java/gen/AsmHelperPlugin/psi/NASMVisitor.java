@@ -7,6 +7,18 @@ import org.jetbrains.annotations.NotNull;
 
 public class NASMVisitor extends PsiElementVisitor {
 
+    public void visitAvx2Op(@NotNull NASMAvx2Op o) {
+        visitPsiElement(o);
+    }
+
+    public void visitAvx512Op(@NotNull NASMAvx512Op o) {
+        visitPsiElement(o);
+    }
+
+    public void visitAvxOp(@NotNull NASMAvxOp o) {
+        visitPsiElement(o);
+    }
+
   public void visitAddress(@NotNull NASMAddress o) {
     visitExpr(o);
   }
@@ -79,6 +91,14 @@ public class NASMVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+    public void visitFpuOp(@NotNull NASMFpuOp o) {
+        visitPsiElement(o);
+    }
+
+    public void visitGeneralOp(@NotNull NASMGeneralOp o) {
+        visitPsiElement(o);
+    }
+
   public void visitIStruc(@NotNull NASMIStruc o) {
     visitPsiElement(o);
   }
@@ -107,6 +127,10 @@ public class NASMVisitor extends PsiElementVisitor {
   public void visitLabelIdentifier(@NotNull NASMLabelIdentifier o) {
     visitExpr(o);
   }
+
+    public void visitMmxOp(@NotNull NASMMmxOp o) {
+        visitPsiElement(o);
+    }
 
   public void visitMacro(@NotNull NASMMacro o) {
     visitPsiElement(o);
@@ -172,6 +196,26 @@ public class NASMVisitor extends PsiElementVisitor {
     visitExpr(o);
   }
 
+    public void visitSse2Op(@NotNull NASMSse2Op o) {
+        visitPsiElement(o);
+    }
+
+    public void visitSse3Op(@NotNull NASMSse3Op o) {
+        visitPsiElement(o);
+    }
+
+    public void visitSse4Op(@NotNull NASMSse4Op o) {
+        visitPsiElement(o);
+    }
+
+    public void visitSseOp(@NotNull NASMSseOp o) {
+        visitPsiElement(o);
+    }
+
+    public void visitSystemOp(@NotNull NASMSystemOp o) {
+        visitPsiElement(o);
+    }
+
   public void visitSeg(@NotNull NASMSeg o) {
     visitExpr(o);
   }
@@ -199,6 +243,14 @@ public class NASMVisitor extends PsiElementVisitor {
   public void visitStructureField(@NotNull NASMStructureField o) {
     visitExpr(o);
   }
+
+    public void visitVirtualizationOp(@NotNull NASMVirtualizationOp o) {
+        visitPsiElement(o);
+    }
+
+    public void visitX64Op(@NotNull NASMX64Op o) {
+        visitPsiElement(o);
+    }
 
   public void visitPsiElement(@NotNull PsiElement o) {
     visitElement(o);
